@@ -13,13 +13,16 @@
             background-repeat: no-repeat;
             background-size:contain;
         }
-
+        #usuarios div p{
+            padding:10px;
+            margin:0;
+        }
 
     </style>
 </head>
 <body>
 <div class="jumbotron">
-    <h1>Lista aleatoria de Usuarios</h1>
+    <h1 class="display-4">Lista aleatoria de Usuarios</h1>
 </div>
 <div class="row justify-content-center">
     <div class="col-11">
@@ -44,12 +47,12 @@
             jqxhr.done(function(json){
                 for(var i=0;i<50;i++){
                     var nombre=json.results[i].name.first+" ";
-                        nombre+=json.results[i].name.last;
+                    nombre+=json.results[i].name.last;
                     var email=json.results[i].email;
                     var direccion=json.results[i].location.street+", ";
-                        direccion+=json.results[i].location.postcode+", ";
-                        direccion+=json.results[i].location.city+" (";
-                        direccion+=json.results[i].location.state+")";
+                    direccion+=json.results[i].location.postcode+", ";
+                    direccion+=json.results[i].location.city+" (";
+                    direccion+=json.results[i].location.state+")";
                     var foto=json.results[i].picture.large;
                     if(i%2==0){
                         var color='white';
@@ -58,9 +61,9 @@
                     }
                     $("#usuarios").append(
                         "<div id='u"+i+"' style='background-image:url("+foto+");background-color:"+color+"'>"+
-                            "<p>"+nombre+"</p>"+
-                            "<p>"+email+"</p>"+
-                            "<p>"+direccion+"</p>"+
+                        "<p>"+nombre+"</p>"+
+                        "<p>"+email+"</p>"+
+                        "<p>"+direccion+"</p>"+
                         "</div>"
                     );
 
