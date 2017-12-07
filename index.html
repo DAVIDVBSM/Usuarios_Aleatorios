@@ -21,20 +21,53 @@
 </div>
 <div class="row justify-content-center">
     <div class="col-10">
-        <button class="btn btn-block btn-primary">Hazlo!</button>
+        <button id="hazlo" class="btn btn-block btn-primary">Hazlo!</button>
     </div>
     <div id="usuarios" class="col-10">
-        <div id="u1" style="background-image:url(https://randomuser.me/api/portraits/men/58.jpg)">
-            <p>Art Russell</p>
-            <p>art.russell@example.com</p>
-            <p>6495 Queen Street, WF1 2PP, Kingston Upon Hull (Rutland)</p>
-        </div>
-        <div id="u2" style="background-image:url(https://randomuser.me/api/portraits/men/58.jpg);background-color:lightgray">
-            <p>Art Russell</p>
-            <p>art.russell@example.com</p>
-            <p>6495 Queen Street, WF1 2PP, Kingston Upon Hull (Rutland)</p>
-        </div>
+
     </div>
 </div>
+<script src="../src/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        $("#hazlo").on("click",function(){
+            $(this).hide();
+            $("#usuarios").show();
+            var jqxhr=$.ajax({
+                method:"GET",
+                url:"https://randomuser.me/api",
+                data:{results:"50"},
+                dataType:"json"
+            });
+            jqxhr.done(function(json){
+                console.log(json);
+                var nombre='';
+                var email='';
+                var direccion='';
+                var foto='';
+                for(var i=0;i<50;i++){
+                    nombre=json.results[i].name.first+" ";
+                    nombre+=json.results[i].name.last;
+                    email=json.results[i].email;
+                    direccion=json.results[i].location.street+", ";
+                    direccion+=json.results[i].location.postcode+", ";
+                    direccion+=json.results[i].location.city+" (";
+                    direccion+=json.results[i].location.state+")";
+                    foto=json.results[i].picture.medium;
+                    foto=
+                    $("#usuarios").append(
+                        "<div id='u"+i+"' style='background-image:url("+foto+")'>"+
+                            "<p>"+nombre+"</p>"+
+                            "<p>"+email+"</p>"+
+                            "<p>"+direccion+"</p>"+
+                        "</div>"
+
+                    );
+
+                }
+            })
+        })
+    })
+</script>
 </body>
 </html>
