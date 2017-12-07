@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usuarios aleatorios</title>
     <link rel="stylesheet" href="../src/bootstrap.min.css">
+    <style>
+        #usuarios div{
+            padding-left:150px;
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+    </style>
 </head>
 <body>
 <div class="jumbotron">
@@ -15,6 +22,18 @@
 <div class="row justify-content-center">
     <div class="col-10">
         <button class="btn btn-block btn-primary">Hazlo!</button>
+    </div>
+    <div id="usuarios" class="col-10">
+        <div id="u1" style="background-image:url(https://randomuser.me/api/portraits/men/58.jpg)">
+            <p>Art Russell</p>
+            <p>art.russell@example.com</p>
+            <p>6495 Queen Street, WF1 2PP, Kingston Upon Hull (Rutland)</p>
+        </div>
+        <div id="u2" style="background-image:url(https://randomuser.me/api/portraits/men/58.jpg);background-color:lightgray">
+            <p>Art Russell</p>
+            <p>art.russell@example.com</p>
+            <p>6495 Queen Street, WF1 2PP, Kingston Upon Hull (Rutland)</p>
+        </div>
     </div>
 </div>
 </body>
