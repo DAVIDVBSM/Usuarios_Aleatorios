@@ -1,0 +1,13 @@
+
+#usuarios div{
+    padding-left:150px;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+#usuarios div p{
+    padding:10px;
+    margin:0;
+}
+#usuarios div p:nth-child(odd){
+    text-transform: capitalize;
+}

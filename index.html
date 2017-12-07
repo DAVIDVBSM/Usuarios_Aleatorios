@@ -6,19 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usuarios aleatorios</title>
-    <link rel="stylesheet" href="../src/bootstrap.min.css">
-    <style>
-        #usuarios div{
-            padding-left:150px;
-            background-repeat: no-repeat;
-            background-size:contain;
-        }
-        #usuarios div p{
-            padding:10px;
-            margin:0;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/principal.css">
 </head>
 <body>
 <div class="jumbotron">
@@ -32,45 +21,7 @@
 
     </div>
 </div>
-<script src="../src/jquery-3.2.1.min.js"></script>
-<script>
-    $(function(){
-        $("#hazlo").on("click",function(){
-            $(this).hide();
-            $("#usuarios").show();
-            var jqxhr=$.ajax({
-                method:"GET",
-                url:"https://randomuser.me/api",
-                data:{results:"50"},
-                dataType:"json"
-            });
-            jqxhr.done(function(json){
-                for(var i=0;i<50;i++){
-                    var nombre=json.results[i].name.first+" ";
-                    nombre+=json.results[i].name.last;
-                    var email=json.results[i].email;
-                    var direccion=json.results[i].location.street+", ";
-                    direccion+=json.results[i].location.postcode+", ";
-                    direccion+=json.results[i].location.city+" (";
-                    direccion+=json.results[i].location.state+")";
-                    var foto=json.results[i].picture.large;
-                    if(i%2==0){
-                        var color='white';
-                    }else{
-                        var color='lightgray';
-                    }
-                    $("#usuarios").append(
-                        "<div id='u"+i+"' style='background-image:url("+foto+");background-color:"+color+"'>"+
-                        "<p>"+nombre+"</p>"+
-                        "<p>"+email+"</p>"+
-                        "<p>"+direccion+"</p>"+
-                        "</div>"
-                    );
-
-                }
-            })
-        })
-    })
-</script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/principal.js"></script>
 </body>
 </html>
