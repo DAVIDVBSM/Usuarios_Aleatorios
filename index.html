@@ -13,6 +13,8 @@
             background-repeat: no-repeat;
             background-size:contain;
         }
+
+
     </style>
 </head>
 <body>
@@ -20,10 +22,10 @@
     <h1>Lista aleatoria de Usuarios</h1>
 </div>
 <div class="row justify-content-center">
-    <div class="col-10">
+    <div class="col-11">
         <button id="hazlo" class="btn btn-block btn-primary">Hazlo!</button>
     </div>
-    <div id="usuarios" class="col-10">
+    <div id="usuarios" class="col-11">
 
     </div>
 </div>
@@ -40,28 +42,26 @@
                 dataType:"json"
             });
             jqxhr.done(function(json){
-                console.log(json);
-                var nombre='';
-                var email='';
-                var direccion='';
-                var foto='';
                 for(var i=0;i<50;i++){
-                    nombre=json.results[i].name.first+" ";
-                    nombre+=json.results[i].name.last;
-                    email=json.results[i].email;
-                    direccion=json.results[i].location.street+", ";
-                    direccion+=json.results[i].location.postcode+", ";
-                    direccion+=json.results[i].location.city+" (";
-                    direccion+=json.results[i].location.state+")";
-                    foto=json.results[i].picture.medium;
-                    foto=
+                    var nombre=json.results[i].name.first+" ";
+                        nombre+=json.results[i].name.last;
+                    var email=json.results[i].email;
+                    var direccion=json.results[i].location.street+", ";
+                        direccion+=json.results[i].location.postcode+", ";
+                        direccion+=json.results[i].location.city+" (";
+                        direccion+=json.results[i].location.state+")";
+                    var foto=json.results[i].picture.large;
+                    if(i%2==0){
+                        var color='white';
+                    }else{
+                        var color='lightgray';
+                    }
                     $("#usuarios").append(
-                        "<div id='u"+i+"' style='background-image:url("+foto+")'>"+
+                        "<div id='u"+i+"' style='background-image:url("+foto+");background-color:"+color+"'>"+
                             "<p>"+nombre+"</p>"+
                             "<p>"+email+"</p>"+
                             "<p>"+direccion+"</p>"+
                         "</div>"
-
                     );
 
                 }
